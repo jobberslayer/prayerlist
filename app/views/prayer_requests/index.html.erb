@@ -1,0 +1,13 @@
+<table>
+<tr>
+  <th>Title</th>
+  <th>Author</th>
+</tr>
+<% PrayerRequest.all.each do |pr| %>
+  <tr>
+  <td><%= link_to pr.title, prayer_request_path(pr.id)  %></td>
+  <td><%= User.find(pr.user_id).name %></td>
+  <td><%= link_to 'edit', edit_prayer_request_path(pr.id)%></td>
+  </tr>
+<% end %>
+</table>

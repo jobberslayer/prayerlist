@@ -1,0 +1,13 @@
+<%=form_for(@prayer_request) do |p|%>
+  <div>  
+    <%= p.label :title %><br/>
+    <%= p.text_field :title %>
+  </div>  
+  <div>
+    <%= p.text_area :request_text %>
+  </div>
+
+  <div>
+    <%= p.submit 'Update', class: "btn btn-large btn-primary" %>
+  </div>
+<%end%>
