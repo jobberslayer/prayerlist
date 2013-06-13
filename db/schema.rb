@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612180646) do
+ActiveRecord::Schema.define(:version => 20130612201628) do
 
   create_table "prayer_requests", :force => true do |t|
     t.datetime "created_at",                        :null => false
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20130612180646) do
     t.text     "request_text"
     t.string   "answered"
     t.string   "boolean",      :default => "false"
+  end
+
+  create_table "prayer_updates", :force => true do |t|
+    t.integer  "prayer_request_id"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "users", :force => true do |t|

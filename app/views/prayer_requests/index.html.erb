@@ -8,6 +8,7 @@
   <td><%= link_to pr.title, prayer_request_path(pr.id)  %></td>
   <td><%= User.find(pr.user_id).name %></td>
   <td><%= link_to 'edit', edit_prayer_request_path(pr.id)%></td>
+  <td><%= link_to 'remove', pr, :confirm => 'Are you sure you want to destroy this request?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

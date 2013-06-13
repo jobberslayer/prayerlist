@@ -3,3 +3,15 @@
 <div>
   <%= @prayer_request.request_text %>
 </div>
+
+<div><%= link_to 'Add Update', new_update_prayer_request_path(@prayer_request.id)  %>
+
+<h2>Updates</h2>
+<% @prayer_request.prayer_updates.each do |u|%>
+<div>
+  <%= u.body %><br/>
+  <%= link_to 'edit', edit_update_prayer_request_path(@prayer_request.id, u.id) %>
+  <%= link_to 'delete', delete_update_prayer_request_path(@prayer_request.id, u.id), data: { confirm: "Are you sure?" }, method: 'delete' %>
+</div>
+<hr/>
+<%end%>

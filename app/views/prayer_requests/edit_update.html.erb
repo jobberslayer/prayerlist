@@ -1,0 +1,4 @@
+<%= form_for(@prayer_update, url: update_update_prayer_request_path(@prayer_request.id, @prayer_update.id)) do |f| %>
+  <%= f.text_area :body %>  <br/>
+  <%= f.submit 'Save', class: "btn btn-large btn-primary" %>
+<%end%>
