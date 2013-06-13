@@ -1,17 +1,26 @@
+<%= link_to 'Back', prayer_requests_path, class: "btn btn-medium btn-primary"%>
 <h1><%= @prayer_request.title %></h1>
 
-<div>
+<div class="well">
   <%= @prayer_request.request_text %>
 </div>
 
-<div><%= link_to 'Add Update', new_update_prayer_request_path(@prayer_request.id)  %>
+<% if user_owned?(@prayer_request.user_id) %>
+<div><%= link_to 'Add Update', new_update_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-primary" %>
+<%end%>
 
+<% if !@prayer_request.prayer_updates.empty?%>
 <h2>Updates</h2>
+<%end%>
 <% @prayer_request.prayer_updates.each do |u|%>
-<div>
+<div class="well">
   <%= u.body %><br/>
-  <%= link_to 'edit', edit_update_prayer_request_path(@prayer_request.id, u.id) %>
-  <%= link_to 'delete', delete_update_prayer_request_path(@prayer_request.id, u.id), data: { confirm: "Are you sure?" }, method: 'delete' %>
 </div>
-<hr/>
+<% if user_owned?(@prayer_request.user_id) %>
+<div class="well well-small">
+  <%= link_to 'edit', edit_update_prayer_request_path(@prayer_request.id, u.id), class: "btn btn-small btn-primary" %>
+  <%= link_to 'delete', delete_update_prayer_request_path(@prayer_request.id, u.id), data: { confirm: "Are you sure?" }, method: 'delete', class: "btn btn-small btn-primary" %>
+</div>
+<%end%>
+</div>
 <%end%>

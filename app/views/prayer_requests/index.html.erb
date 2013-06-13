@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped table-bordered table-condensed">
 <tr>
   <th>Title</th>
   <th>Author</th>
@@ -7,8 +7,14 @@
   <tr>
   <td><%= link_to pr.title, prayer_request_path(pr.id)  %></td>
   <td><%= User.find(pr.user_id).name %></td>
-  <td><%= link_to 'edit', edit_prayer_request_path(pr.id)%></td>
-  <td><%= link_to 'remove', pr, :confirm => 'Are you sure you want to destroy this request?', :method => :delete %></td>
+  <% if user_owned?(pr.user_id) %>
+  <td>
+    <%= link_to 'edit', edit_prayer_request_path(pr.id), class: "btn btn-small btn-primary"%>
+    <%= link_to 'remove', pr, :confirm => 'Are you sure you want to destroy this request?', :method => :delete, class: "btn btn-small btn-primary" %>
+  </td>
+  <%else%>
+  <td>&nbsp;</td>
+  <% end %>
   </tr>
 <% end %>
 </table>
