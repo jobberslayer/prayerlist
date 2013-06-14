@@ -3,7 +3,7 @@
   <th>Title</th>
   <th>Author</th>
 </tr>
-<% PrayerRequest.all.each do |pr| %>
+<% PrayerRequest.descending.each do |pr| %>
   <tr>
   <td><%= link_to pr.title, prayer_request_path(pr.id)  %></td>
   <td><%= User.find(pr.user_id).name %></td>

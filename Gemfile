@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'bootstrap-sass', '2.1'
 gem 'jquery-rails'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'                                                   

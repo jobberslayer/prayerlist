@@ -3,4 +3,10 @@ class PrayerRequest < ActiveRecord::Base
   has_many :prayer_updates
 
   attr_accessible :user_id, :title, :request_text
+  scope :descending, order("updated_at DESC")
+  scope :recent, order("updated_at DESC") 
+
+  def self.belongs_to_user(user)
+    where(user_id: user.id)
+  end
 end
