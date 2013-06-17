@@ -14,13 +14,12 @@
 ActiveRecord::Schema.define(:version => 20130612201628) do
 
   create_table "prayer_requests", :force => true do |t|
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "user_id"
     t.string   "title"
     t.text     "request_text"
-    t.string   "answered"
-    t.string   "boolean",      :default => "false"
+    t.boolean  "answered",     :default => false
   end
 
   create_table "prayer_updates", :force => true do |t|

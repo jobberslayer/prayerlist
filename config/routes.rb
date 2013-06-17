@@ -4,6 +4,8 @@ Prayerlist::Application.routes.draw do
 
   resources :prayer_requests
 
+  get 'prayer_request/:id/toggle_answered', to: 'prayer_requests#toggle_answered', as: :toggle_answered_prayer_request
+
   get '/prayer_requests/:prayer_request_id/new/', to: 'prayer_requests#new_update', as: :new_update_prayer_request
   post '/prayer_requests/:prayer_request_id/new/', to: 'prayer_requests#create_update', as: :new_update_prayer_request
   get '/prayer_requests/:prayer_request_id/edit/:prayer_update_id', to: 'prayer_requests#edit_update', as: :edit_update_prayer_request

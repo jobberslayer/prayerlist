@@ -1,17 +1,23 @@
 <h1><%= @prayer_request.title %></h1>
+<p><%= I18n.l ESTed(@prayer_request.updated_at)%></p>
 
 <div class="well">
   <%= @prayer_request.request_text %>
 </div>
 
 <% if user_owned?(@prayer_request.user_id) %>
-<div><%= link_to 'Add Update', new_update_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-primary" %>
+<div>
+  <%= link_to 'Edit', edit_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-primary" %>
+  <%= link_to @answered_text, toggle_answered_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-#{@answered_button_style}"%>
+  <%= link_to 'Add Update', new_update_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-primary" %>
+</div>
 <%end%>
 
 <% if !@prayer_request.prayer_updates.empty?%>
 <h2>Updates</h2>
 <%end%>
 <% @prayer_request.prayer_updates.each do |u|%>
+<p><%= I18n.l ESTed(u.updated_at)%></p>
 <div class="well">
   <%= u.body %><br/>
 </div>

@@ -14,9 +14,17 @@ section {
   overflow: auto;
 }
 
-textarea {
+textarea{ 
   resize: vertical;
+  width:500px; 
+  height:200px; 
 }
+
+label {
+  font-weight: bold;
+}
+
+
 
 .center {
   text-align: center;

@@ -1,40 +1,38 @@
-<div class="container">
-  <div class="row">
-    <div class="span6">
-      <h3>Latest Requests</h3>
-      <table class='table table-striped'>
-      <% @latest_requests.each do |r| %>
-      <tr>
-        <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-        <td><%= r.updated_at %>
-      </tr> 
-      <% end %>
-      </table>
-    </div>
-    <div class="span6">
-      <h3>Latest Updates</h3>
-      <table class='table table-striped'>
-      <% @latest_updates.each do |u| %>
-      <% r = u.prayer_request %>
-      <tr>
-        <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-        <td><%= r.updated_at %>
-      </tr> 
-      <% end %>
-      </table>
-    </div>
+  <div class="span8">
+    <h3>Latest Requests</h3>
+    <table class='table table-striped'>
+    <% @latest_requests.each do |r| %>
+    <tr>
+      <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+      <td><%= I18n.l ESTed(r.updated_at) %>
+      <td><%= answered?(r) %>
+    </tr> 
+    <% end %>
+    </table>
   </div>
-  <div class="row">
-    <div class="span6">
-      <h3>My Requests</h3>
-      <table class='table table-striped'>
-      <% @my_requests.each do |r| %>
-      <tr>
-        <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-        <td><%= r.updated_at %>
-      </tr> 
-      <% end %>
-      </table>
-    </div>
+  <div class="span8">
+    <h3>Latest Updates</h3>
+    <table class='table table-striped'>
+    <% @latest_updates.each do |u| %>
+    <% r = u.prayer_request %>
+    <tr>
+      <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+      <td><%= I18n.l ESTed(u.updated_at) %>
+      <td><%= answered?(r) %>
+    </tr> 
+    <% end %>
+    </table>
+  </div>
+  <div class="span8">
+    <h3>My Requests</h3>
+    <table class='table table-striped'>
+    <% @my_requests.each do |r| %>
+    <tr>
+      <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+      <td><%= I18n.l ESTed(r.updated_at) %>
+      <td><%= answered?(r) %>
+    </tr> 
+    <% end %>
+    </table>
   </div>
 </div>

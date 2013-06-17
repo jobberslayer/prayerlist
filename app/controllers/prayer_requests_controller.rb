@@ -1,5 +1,5 @@
 class PrayerRequestsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!
 
   def index
   end
@@ -25,6 +25,13 @@ class PrayerRequestsController < ApplicationController
 
   def show
     @prayer_request = PrayerRequest.find(params[:id])
+    if @prayer_request.answered?
+      @answered_text = 'Answered'
+      @answered_button_style = 'success'
+    else
+      @answered_text = 'UnAnswered'
+      @answered_button_style = 'warning'
+    end
   end
 
   def edit
@@ -35,7 +42,7 @@ class PrayerRequestsController < ApplicationController
     @prayer_request = PrayerRequest.find(params[:id])
     if @prayer_request.update_attributes(params[:prayer_request])
       flash.now[:success] = "Request updated."
-      render :index
+      render :show
     else
       flash.now[:error] = "Errors below."
       render :edit
@@ -47,6 +54,17 @@ class PrayerRequestsController < ApplicationController
     @prayer_request.delete()
     flash[:success] = "Request deleted."
     redirect_to prayer_requests_path
+  end
+
+  def toggle_answered
+    @prayer_request = PrayerRequest.find(params[:id])
+    @prayer_request.toggle(:answered)
+    if @prayer_request.save
+      redirect_to prayer_request_path(params[:id])
+    else
+      flash.now[:error] = "Errors below"
+      render :show
+    end 
   end
 
   def new_update
@@ -61,11 +79,12 @@ class PrayerRequestsController < ApplicationController
     
     if p.save
       flash.now[:success] = "Prayer update created."
+      redirect_to prayer_request_path(prayer_request_id)
     else
       flash.now[:error] = "Errors below."
+      render :edit
     end
 
-    redirect_to prayer_request_path(prayer_request_id)
   end
 
   def edit_update

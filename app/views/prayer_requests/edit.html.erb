@@ -1,13 +1,16 @@
-<%=form_for(@prayer_request) do |p|%>
-  <div>  
-    <%= p.label :title %><br/>
-    <%= p.text_field :title %>
+<%=form_for @prayer_request, :html => {:class => "form-horizontal"} do |p|%>
+  <div class="control-group"> 
+    <%= p.label :title, class: 'control-label' %>
+    <div class="controls">
+      <%= p.text_field :title %>
+    </div>
   </div>  
-  <div>
+  <div class="controls">
     <%= p.text_area :request_text %>
   </div>
-
-  <div>
+  <br/>
+  <div class="controls">
     <%= p.submit 'Update', class: "btn btn-large btn-primary" %>
+    <%= link_to 'Cancel', prayer_request_path(@prayer_request.id), class: "btn btn-large" %>
   </div>
 <%end%>
