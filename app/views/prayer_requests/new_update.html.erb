@@ -1,5 +1,12 @@
-<%= form_for(@prayer_update, url: new_update_prayer_request_path(@prayer_request_id)) do |f| %>
-  <%= f.text_area :body %>  <br/>
-  <%= f.submit 'Save', class: "btn btn-large btn-primary" %>
-  <%= link_to 'Cancel', prayer_request_path(@prayer_request_id), class: "btn btn-large" %>
+<%= form_for(@prayer_update, url: new_update_prayer_request_path(@prayer_request_id), html: {class: 'form-horizontal'}) do |f| %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_area :body %>
+    </div>
+  </div>
+
+  <div class="controls">
+    <%= f.submit 'Save', class: "btn btn-large btn-primary" %>
+    <%= link_to 'Cancel', prayer_request_path(@prayer_request_id), class: "btn btn-large" %>
+  </div>
 <%end%>
