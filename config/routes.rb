@@ -1,4 +1,8 @@
 Prayerlist::Application.routes.draw do
+  get "reports/answered"
+
+  get "reports/unanswered"
+
   devise_for :users
   root to: 'front_page#index'
 

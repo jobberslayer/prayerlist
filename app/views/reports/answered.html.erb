@@ -1,0 +1,14 @@
+<h1>Answered Prayer Requests</h1>
+
+<form>
+  <textarea>
+  <% @prayer_requests.each do |r| %>
+<%= r.title %> on <%= I18n.l ESTed(r.updated_at) %>
+<%= r.request_text %>
+<%= '-'*50 %>
+Last Update on <%= I18n.l ESTed(r.prayer_updates.last.updated_at) %> 
+<%= r.prayer_updates.last.body %>
+<%= '='*50 %>
+  <% end %>
+  </textarea>
+</form>
