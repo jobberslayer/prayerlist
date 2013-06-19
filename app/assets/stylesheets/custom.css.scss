@@ -37,7 +37,7 @@ label {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #000;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -104,3 +104,12 @@ fieldset div {
   @extend .control-group;
   @extend .error;
  }
+
+.dropdown-menu {right: auto !important}
+.dropdown-menu::before {left:12px;right:auto !important}
+.dropdown-menu::after {left:13px;right:auto !important}
+
+.white-caret {
+  border-top-color: red !important;
+  border-bottom-color: red !important;
+}
