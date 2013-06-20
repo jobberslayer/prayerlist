@@ -11,4 +11,5 @@ class PrayerRequest < ActiveRecord::Base
   def self.belongs_to_user(user)
     where(user_id: user.id)
   end
+
 end

@@ -1,38 +1,43 @@
-  <div class="span8">
-    <h3>Latest Requests</h3>
-    <table class='table table-striped'>
-    <% @latest_requests.each do |r| %>
-    <tr>
-      <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-      <td><%= I18n.l ESTed(r.updated_at) %>
-      <td><%= answered?(r) %>
-    </tr> 
-    <% end %>
-    </table>
-  </div>
-  <div class="span8">
-    <h3>Latest Updates</h3>
-    <table class='table table-striped'>
-    <% @latest_updates.each do |u| %>
-    <% r = u.prayer_request %>
-    <tr>
-      <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-      <td><%= I18n.l ESTed(u.updated_at) %>
-      <td><%= answered?(r) %>
-    </tr> 
-    <% end %>
-    </table>
-  </div>
-  <div class="span8">
-    <h3>My Requests</h3>
-    <table class='table table-striped'>
-    <% @my_requests.each do |r| %>
-    <tr>
-      <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-      <td><%= I18n.l ESTed(r.updated_at) %>
-      <td><%= answered?(r) %>
-    </tr> 
-    <% end %>
-    </table>
-  </div>
+<% unless @latest_requests.empty? %>
+<div>
+  <h3>Latest Updates</h3>
+  <table class='table table-striped'>
+  <% @latest_requests.each do |r| %>
+  <tr>
+    <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+    <td><%= I18n.l ESTed(r.updated_at) %></td>
+    <td><%= answered?(r) %></td>
+  </tr> 
+  <% end %>
+  </table>
 </div>
+<%end%>
+
+<% unless @latest_requests_ans.empty? %>
+<div>
+  <h3>Latest Answered</h3>
+  <table class='table table-striped'>
+  <% @latest_requests_ans.each do |r| %>
+  <tr>
+    <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+    <td><%= I18n.l ESTed(r.updated_at) %></td>
+  </tr> 
+  <% end %>
+  </table>
+</div>
+<%end%>
+
+<% unless @my_requests.empty? %>
+<div>
+  <h3>My Requests</h3>
+  <table class='table table-striped'>
+  <% @my_requests.each do |r| %>
+  <tr>
+    <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+    <td><%= I18n.l ESTed(r.updated_at) %></td>
+    <td><%= answered?(r) %></td>
+  </tr> 
+  <% end %>
+  </table>
+</div>
+<%end%>

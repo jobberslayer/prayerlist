@@ -1,5 +1,6 @@
 class PrayerUpdate < ActiveRecord::Base
-  belongs_to :prayer_request
+  # touch updates the prayer_request when a update is created or changed
+  belongs_to :prayer_request, :touch => true
 
   attr_accessible :body, :prayer_request_id
 
