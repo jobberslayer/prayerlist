@@ -8,7 +8,6 @@
           <% if signed_in? %>
             <li><%= link_to "Prayer Requests", prayer_requests_path %></li>
             <li><%= link_to "Create Request", new_prayer_request_path%></li>
-            <li><%= link_to "Profile", edit_user_registration_path%></li>
             <li class="dropdown">
               <%= link_to raw("Reports<i class='caret'></i>"), "#", class: 'dropdown-toggle', "data-toggle" => "dropdown" %>
               <ul class="dropdown-menu">
@@ -16,6 +15,7 @@
                 <li><%= link_to "Answered", reports_answered_path %></li>
               </ul>
             </li>
+            <li><%= link_to "Profile", edit_user_registration_path%></li>
             <li><%= link_to "Sign out | (#{current_user.email})", destroy_user_session_path, method: "delete" %>
             </li>
           <% else %>

@@ -48,4 +48,8 @@ Prayerlist::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  
   }
+
+  # recaptcha keys
+  ENV['RECAPTCHA_PUBLIC_KEY']='6Lc-HOMSAAAAAKeMiBGXMskyRnlR1l809Dv58GNh'
+  ENV['RECAPTCHA_PRIVATE_KEY'] = '6Lc-HOMSAAAAABQnE9WQlxxRzBVCj7_3TNEe0hNC' 
 end

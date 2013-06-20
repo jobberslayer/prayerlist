@@ -11,6 +11,8 @@ gem 'bootstrap-sass', '2.1'
 gem 'jquery-rails'
 gem 'will_paginate'
 
+gem 'recaptcha', :require => 'recaptcha/rails'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'                                                   
   gem 'rb-readline', '~> 0.4.2'

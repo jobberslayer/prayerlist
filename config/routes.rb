@@ -1,9 +1,11 @@
 Prayerlist::Application.routes.draw do
+  get "registrations/create"
+
   get "reports/answered"
 
   get "reports/unanswered"
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   root to: 'front_page#index'
 
   resources :prayer_requests
