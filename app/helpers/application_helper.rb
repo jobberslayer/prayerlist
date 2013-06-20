@@ -8,8 +8,8 @@ module ApplicationHelper
     end
   end
 
-  def answered?(request)
-    request.answered? ? 'answered' : 'unanswered'
+  def answered_image(request)
+    request.answered? ? "/images/praise_icon.png" : "/images/prayer_icon.png"
   end
 
   def ESTed(date)

@@ -6,7 +6,7 @@
   <tr>
     <td><%= link_to r.title, prayer_request_path(r.id) %></td>
     <td><%= I18n.l ESTed(r.updated_at) %></td>
-    <td><%= answered?(r) %></td>
+    <td><%= image_tag answered_image(r), width: '32px', alt: "PRAY!" %></td>
   </tr> 
   <% end %>
   </table>
@@ -35,7 +35,7 @@
   <tr>
     <td><%= link_to r.title, prayer_request_path(r.id) %></td>
     <td><%= I18n.l ESTed(r.updated_at) %></td>
-    <td><%= answered?(r) %></td>
+    <td><%= image_tag answered_image(r), width: '32px', alt: "PRAY!" %></td>
   </tr> 
   <% end %>
   </table>
