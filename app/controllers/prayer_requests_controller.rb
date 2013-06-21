@@ -2,6 +2,7 @@ class PrayerRequestsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @prayer_requests =  PrayerRequest.recent.paginate(page: params[:page], per_page: 5)
   end
 
   def new

@@ -4,7 +4,7 @@
   <th>Author</th>
   <th>Updated At</th>
 </tr>
-<% PrayerRequest.descending.each do |pr| %>
+<% @prayer_requests.each do |pr| %>
   <tr>
     <td><%= link_to pr.title, prayer_request_path(pr.id)  %></td>
     <td><%= User.find(pr.user_id).name %></td>
@@ -12,3 +12,4 @@
   </tr>
 <% end %>
 </table>
+<%= will_paginate @prayer_requests %>

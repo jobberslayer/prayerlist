@@ -10,7 +10,6 @@ gem 'devise'
 gem 'bootstrap-sass', '2.1'
 gem 'jquery-rails'
 gem 'will_paginate'
-gem 'ajax_pagination'
 
 gem 'recaptcha', :require => 'recaptcha/rails'
 
