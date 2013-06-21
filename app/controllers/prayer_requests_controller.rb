@@ -15,12 +15,12 @@ class PrayerRequestsController < ApplicationController
     
     if p.save
       flash.now[:success] = "Prayer request created."
+      render :index
     else
-      flash.now[:error] = "Errors below."
+      flash.now[:error] = p.errors.full_messages
+      @prayer_request = p 
+      render :new
     end
-
-    render :index
-
   end
 
   def show

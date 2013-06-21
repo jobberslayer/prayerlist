@@ -10,6 +10,7 @@ gem 'devise'
 gem 'bootstrap-sass', '2.1'
 gem 'jquery-rails'
 gem 'will_paginate'
+gem 'ajax_pagination'
 
 gem 'recaptcha', :require => 'recaptcha/rails'
 
@@ -20,6 +21,8 @@ gem 'prawnto'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'                                                   
   gem 'rb-readline', '~> 0.4.2'
+  gem 'populator'
+  gem 'faker'
 end
 
 # Gems used only for assets and not required

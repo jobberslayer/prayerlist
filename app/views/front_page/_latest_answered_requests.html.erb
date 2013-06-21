@@ -1,0 +1,15 @@
+<h3>Latest Answered</h3>
+<table class='table table-striped'>
+<% @latest_requests_ans.each do |r| %>
+<tr>
+  <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+  <td><%= I18n.l ESTed(r.updated_at) %></td>
+</tr> 
+<% end %>
+</table>
+<%= will_paginate @latest_requests_ans, param_name: 'lra_page' %>
+<script type="text/javascript">
+  $(function() {
+    $('.pagination a').attr('data-remote', 'true');
+  });
+</script>

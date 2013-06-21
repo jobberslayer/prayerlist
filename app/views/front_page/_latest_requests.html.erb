@@ -1,0 +1,18 @@
+<h3>Latest Updates</h3>
+<table class='table table-striped'>
+<% @latest_requests.each do |r| %>
+<tr>
+  <td><%= link_to r.title, prayer_request_path(r.id) %></td>
+  <td><%= r.user.name %>
+  <td><%= I18n.l ESTed(r.updated_at) %></td>
+  <td><%= image_tag answered_image(r), width: '32px', alt: "PRAY!" %></td>
+</tr> 
+<% end %>
+</table>
+<%= will_paginate @latest_requests, param_name: 'lr_page' %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.pagination a').attr('data-remote', 'true');
+  });
+</script>

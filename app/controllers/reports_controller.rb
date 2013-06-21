@@ -1,5 +1,3 @@
-require 'prayer_requests_drawer'
-
 class ReportsController < ApplicationController
   def answered
     @prayer_requests = PrayerRequest.answered.all

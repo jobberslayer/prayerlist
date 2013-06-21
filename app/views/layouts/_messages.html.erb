@@ -1,0 +1,9 @@
+<% if value.kind_of?(Array) %>
+  <ul>
+  <% value.each do |v| %>
+    <li><%= v %></li>
+  <% end %> 
+  <ul>
+<% else %>
+  <%= value %>
+<% end %>

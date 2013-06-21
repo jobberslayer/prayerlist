@@ -2,7 +2,12 @@ class PrayerRequest < ActiveRecord::Base
   belongs_to :user  
   has_many :prayer_updates
 
+  validates :user_id, :presence => true
+  validates :title, :presence => true
+  validates :request_text, :presence => true
+
   attr_accessible :user_id, :title, :request_text
+
   scope :descending, order("updated_at DESC")
   scope :recent, order("updated_at DESC") 
   scope :answered, where(answered: true)

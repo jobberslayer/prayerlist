@@ -1,43 +1,17 @@
+<script type="text/javascript">
+  $(function() {
+    $('.pagination a').attr('data-remote', 'true');
+  });
+</script>
+
 <% unless @latest_requests.empty? %>
-<div>
-  <h3>Latest Updates</h3>
-  <table class='table table-striped'>
-  <% @latest_requests.each do |r| %>
-  <tr>
-    <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-    <td><%= I18n.l ESTed(r.updated_at) %></td>
-    <td><%= image_tag answered_image(r), width: '32px', alt: "PRAY!" %></td>
-  </tr> 
-  <% end %>
-  </table>
-</div>
+  <div id="latest_requests_id"><%= render partial: "latest_requests" %></div>
 <%end%>
 
 <% unless @latest_requests_ans.empty? %>
-<div>
-  <h3>Latest Answered</h3>
-  <table class='table table-striped'>
-  <% @latest_requests_ans.each do |r| %>
-  <tr>
-    <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-    <td><%= I18n.l ESTed(r.updated_at) %></td>
-  </tr> 
-  <% end %>
-  </table>
-</div>
+  <div id="latest_requests_ans_id"><%= render partial: "latest_answered_requests" %></div>
 <%end%>
 
 <% unless @my_requests.empty? %>
-<div>
-  <h3>My Requests</h3>
-  <table class='table table-striped'>
-  <% @my_requests.each do |r| %>
-  <tr>
-    <td><%= link_to r.title, prayer_request_path(r.id) %></td>
-    <td><%= I18n.l ESTed(r.updated_at) %></td>
-    <td><%= image_tag answered_image(r), width: '32px', alt: "PRAY!" %></td>
-  </tr> 
-  <% end %>
-  </table>
-</div>
+  <div id="my_requests_id"><%= render partial: "my_requests" %></div>
 <%end%>
