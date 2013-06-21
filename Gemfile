@@ -13,6 +13,10 @@ gem 'will_paginate'
 
 gem 'recaptcha', :require => 'recaptcha/rails'
 
+#gem 'pdf-writer', :git => 'git://github.com/metaskills/pdf-writer.git'
+gem 'prawn'
+gem 'prawnto'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'                                                   
   gem 'rb-readline', '~> 0.4.2'
