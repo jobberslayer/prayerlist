@@ -36,7 +36,7 @@ Prayerlist::Application.configure do
   config.assets.debug = true
 
   # To build url in emails
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'e-kevin.com:3000' }
 
   # smtp configuration
   config.action_mailer.delivery_method = :smtp

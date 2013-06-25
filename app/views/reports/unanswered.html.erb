@@ -6,9 +6,11 @@
 <%= r.title %> on <%= I18n.l ESTed(r.updated_at) %>
 <%= r.request_text %>
 <%= '-'*50 %>
+<% unless r.prayer_updates.empty? %>
 Last Update
 <%= r.prayer_updates.last.body %>
 <%= '='*50 %>
+<% end %>
   <% end %>
   </textarea>
 </form>
