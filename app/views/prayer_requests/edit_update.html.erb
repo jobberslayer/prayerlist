@@ -1,6 +1,6 @@
 <%= form_for @prayer_update, url: update_update_prayer_request_path(@prayer_request.id, @prayer_update.id), html: {class: "form-horizontal"} do |f| %>
   <div class="controls">
-    <%= f.text_area :body %> 
+    <%= f.text_area :body, :autofocus => true %> 
   </div>
   <br/>
   <div class="controls">

@@ -13,7 +13,11 @@ gem 'will_paginate'
 
 gem 'recaptcha', :require => 'recaptcha/rails'
 
-#gem 'pdf-writer', :git => 'git://github.com/metaskills/pdf-writer.git'
+# searching
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
+# pdf creation
 gem 'prawn'
 gem 'prawnto'
 

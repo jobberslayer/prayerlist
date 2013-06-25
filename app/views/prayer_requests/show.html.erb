@@ -1,13 +1,18 @@
 <h1><%= @prayer_request.title %></h1>
 <p><%= I18n.l ESTed(@prayer_request.updated_at)%></p>
 
+<div>
+  <%= link_to "get PDF", prayer_request_path(@prayer_request.id, format: :pdf), class: "btn btn-small btn-primary"%>
+</div>
+
 <div class="well">
-  <%= @prayer_request.request_text %>
+  <%= simple_format(@prayer_request.request_text) %>
 </div>
 
 <% if user_owned?(@prayer_request.user_id) %>
 <div>
   <%= link_to 'Edit', edit_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-primary" %>
+  <%= link_to 'Delete', prayer_request_path(@prayer_request.id), data: { confirm: "Are you sure?" }, method: 'delete', class: "btn btn-medium btn-danger" %>
   <%= link_to @answered_text, toggle_answered_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-#{@answered_button_style}"%>
   <%= link_to 'Add Update', new_update_prayer_request_path(@prayer_request.id), class: "btn btn-medium btn-primary" %>
 </div>
@@ -19,12 +24,12 @@
 <% @prayer_request.prayer_updates.each do |u|%>
 <p><%= I18n.l ESTed(u.updated_at)%></p>
 <div class="well">
-  <%= u.body %><br/>
+  <%= simple_format(u.body) %><br/>
 </div>
 <% if user_owned?(@prayer_request.user_id) %>
 <div class="well well-small">
   <%= link_to 'edit', edit_update_prayer_request_path(@prayer_request.id, u.id), class: "btn btn-small btn-primary" %>
-  <%= link_to 'delete', delete_update_prayer_request_path(@prayer_request.id, u.id), data: { confirm: "Are you sure?" }, method: 'delete', class: "btn btn-small btn-primary" %>
+  <%= link_to 'delete', delete_update_prayer_request_path(@prayer_request.id, u.id), data: { confirm: "Are you sure?" }, method: 'delete', class: "btn btn-small btn-danger" %>
 </div>
 <%end%>
 <%end%>

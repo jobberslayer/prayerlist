@@ -2,7 +2,17 @@ class PrayerRequestsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @prayer_requests =  PrayerRequest.recent.paginate(page: params[:page], per_page: 5)
+    @search = PrayerRequest.search do
+      fulltext params[:search]
+      paginate :page => params[:page], :per_page => 5
+      order_by :updated_at, :desc
+    end
+
+    if params[:search].present?
+      @prayer_requests =  @search.results
+    else
+      @prayer_requests =  PrayerRequest.recent.paginate(page: params[:page], per_page: 5)
+    end
   end
 
   def new
@@ -15,8 +25,8 @@ class PrayerRequestsController < ApplicationController
     p.user_id = current_user.id
     
     if p.save
-      flash.now[:success] = "Prayer request created."
-      render :index
+      flash[:success] = "Prayer request created."
+      redirect_to prayer_requests_path 
     else
       flash.now[:error] = p.errors.full_messages
       @prayer_request = p 
@@ -52,7 +62,7 @@ class PrayerRequestsController < ApplicationController
 
   def destroy
     @prayer_request = PrayerRequest.find(params[:id])
-    @prayer_request.delete()
+    @prayer_request.destroy()
     flash[:success] = "Request deleted."
     redirect_to prayer_requests_path
   end
@@ -106,7 +116,7 @@ class PrayerRequestsController < ApplicationController
 
   def destroy_update
     @prayer_update = PrayerUpdate.find(params[:prayer_update_id])
-    @prayer_update.delete()
+    @prayer_update.destroy()
     flash[:success] = "Request deleted."
     redirect_to prayer_request_path(params[:prayer_request_id]) 
   end

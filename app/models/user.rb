@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :prayer_requests
+  has_many :prayer_requests, :dependent => :destroy
 
   validates :name, :presence => true
 
